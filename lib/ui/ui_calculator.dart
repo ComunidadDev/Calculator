@@ -9,7 +9,6 @@ class UICalculator extends StatefulWidget {
 }
 
 class _UICalculatorState extends State<UICalculator> {
-
   String text_operation = "2*5";
   String text_result = "10";
 
@@ -27,7 +26,7 @@ class _UICalculatorState extends State<UICalculator> {
     );
   }
 
-  Widget uiBody(BuildContext context){
+  Widget uiBody(BuildContext context) {
     return Column(
       children: [
         head(context),
@@ -36,48 +35,52 @@ class _UICalculatorState extends State<UICalculator> {
     );
   }
 
-  Widget head(BuildContext context){
+  Widget head(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       height: MediaQuery.of(context).size.height * 0.2,
       width: MediaQuery.of(context).size.width,
-      color: Colors.grey,
+      color: Colors.red,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(
             text_operation,
-            style: const TextStyle(
-              fontSize: 30
-            ),
+            style: const TextStyle(fontSize: 30),
           ),
           Text(
             text_result,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 80
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 80),
           )
         ],
       ),
     );
   }
 
-  Widget body(BuildContext ctx){
+  Widget body(BuildContext ctx) {
     return Expanded(
       child: Container(
         color: Colors.deepOrange,
         child: Column(
           children: [
-            Row(children: [button(ctx, "1"), button(ctx, "2"), button(ctx, "1"), button(ctx, "2")],),
-            Row(children: [button(ctx, "1"), button(ctx, "2")],),
+            Row(
+              children: [
+                button(ctx, "1"),
+                button(ctx, "2"),
+                button(ctx, "1"),
+                button(ctx, "2")
+              ],
+            ),
+            Row(
+              children: [button(ctx, "1"), button(ctx, "2")],
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget button(BuildContext context, String number){
+  Widget button(BuildContext context, String number) {
     double margin = 10.0;
     return GestureDetector(
       child: Container(
@@ -85,27 +88,17 @@ class _UICalculatorState extends State<UICalculator> {
         width: (MediaQuery.of(context).size.width * 0.25) - (margin * 2),
         margin: EdgeInsets.all(margin),
         decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(10)
-        ),
+            color: Colors.black, borderRadius: BorderRadius.circular(10)),
         child: Center(
-          child: Text(
-            number,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 50
-            ),
-          )
-        ),
+            child: Text(
+          number,
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
+        )),
       ),
-      onTap: (){
-
-          text_result += number;
-          setState(() {
-
-          });
+      onTap: () {
+        text_result += number;
+        setState(() {});
       },
     );
   }
-
 }
