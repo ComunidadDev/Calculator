@@ -11,7 +11,8 @@ class UICalculator extends StatefulWidget {
 class _UICalculatorState extends State<UICalculator> {
 
   String text_operation = "2*5";
-  String text_result = "10";
+  String text_result = "";
+  int max_size_operation = 9;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class _UICalculatorState extends State<UICalculator> {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       height: MediaQuery.of(context).size.height * 0.2,
       width: MediaQuery.of(context).size.width,
-      color: Colors.grey,
+      color: Colors.black,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -99,11 +100,11 @@ class _UICalculatorState extends State<UICalculator> {
         ),
       ),
       onTap: (){
-
-          text_result += number;
-          setState(() {
-
-          });
+          if((text_result + number).length <= max_size_operation){
+            text_result += number;
+            setState(() {
+            });
+          }
       },
     );
   }
