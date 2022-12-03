@@ -65,6 +65,14 @@ class _UICalculatorState extends State<UICalculator> {
           children: [
             Row(
               children: [
+                button(ctx, "-"),
+                button(ctx, "+"),
+                button(ctx, "*"),
+                button(ctx, "%"),
+              ],
+            ),
+            Row(
+              children: [
                 button(ctx, "1"),
                 button(ctx, "2"),
                 button(ctx, "1"),
